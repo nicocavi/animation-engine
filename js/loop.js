@@ -17,7 +17,6 @@ class Loop{
         if(this.state){
             this.elements[this.index].start()
         }else{
-
             this.elements[this.index].stop()
             this.index++;
             if(this.index >= this.elements.length){

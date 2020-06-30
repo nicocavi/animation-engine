@@ -1,10 +1,10 @@
-class Text extends Element{
+class Img extends Element{
 
     constructor(conf){
-        let element = document.createElement("p");
-        element.innerHTML = conf.content;
+        let element = document.createElement("img");
+        element.setAttribute("src", conf.src);
         super(conf, element);
-        this.setStyle();
+        this.setStyle()
     }
 
     setStyle(){
@@ -12,23 +12,18 @@ class Text extends Element{
         this.element.style.opacity = styles.opacity || 0;
         this.element.style.transition = styles.transition || "2s";
         this.element.style.position = "absolute";
-        this.element.style.top = this.conf.top;
-        this.element.style.left = this.conf.left;
-        this.element.style.fontFamily = styles.fontFamily || 'Arial';
-        this.element.style.fontSize = styles.fontSize || "14px";
-        this.element.style.fontWeight = styles.fontWeight || "Normal";
+        this.element.style.top = this.conf.left;
+        this.element.style.left = this.conf.top;
     }
-
 
     start(){
         let opcion = this.conf.animated;
-        this.element.style.opacity =  opcion.opacity;
+        this.element.style.opacity = opcion.opacity;
         this.element.style.top = opcion.top+"px";
         this.element.style.left = opcion.left+"px";
     }
 
     stop(){
-        console.log("STOP")
         let opcion = this.conf;
         this.element.style.top = opcion.top+"px";
         this.element.style.left = opcion.left+"px";

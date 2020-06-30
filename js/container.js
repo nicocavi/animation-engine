@@ -1,15 +1,18 @@
 class Container extends Element{
 
-    constructor(originx, originy, animated){
-        super(originx, originy, document.createElement("div"));
-        this.animated = animated;
-        this.objects = []
+    constructor(conf){
+        let element = document.createElement("div")
+        super(conf, element);
+        conf.elements.forEach(element => {
+            this.element.appendChild(element.element)
+        });
+        this.objects = conf.elements || [];
         this.setStyle();
     }
 
     setStyle(){
-        super.setStyle();
-        this.element.style.width='100%'
+        this.element.style.width = "100%";
+        this.element.style.height = "100%";
     }
 
     appendChild(object){
@@ -18,14 +21,12 @@ class Container extends Element{
     }
 
     start(){
-        super.start()
         this.objects.forEach(element => {
             element.start()
         });
     }
 
     stop(){
-        super.stop()
         this.objects.forEach(element => {
             element.stop()
         });

@@ -1,22 +1,77 @@
 'use strict'
 const container = document.querySelector("#loop");
 const otro = document.querySelector("#otro");
-let options = {
-    'x':container.clientWidth/2 - 150,
-    'y':container.clientHeight/2
-}
 
-let opciones2 = {
-    'x':container.clientWidth/2 - 150,
-    'y':(container.clientHeight/2)+40
-}
+let text = new Text(
+    {
+        left: container.clientWidth/2,
+        top: container.clientHeight,
+        content:"Desarrollo de apps",
+        animated:{
+            opacity: 1,
+            top: container.clientHeight/2-100,
+            left: container.clientWidth/2
+        },
+        styles:{
+            fontFamily: "Roboto",
+            fontSize: "25px",
+            fontWeight: "normal",
+        }
+    }
+);
 
-console.log("width: "+container.clientWidth/2+" height: "+container.clientHeight/2)
+let text2 = new Text(
+    {
+        left: container.clientWidth/2 - 100,
+        top: container.clientHeight,
+        content: "Osmiun",
+        animated:{
+            opacity: 1,
+            left: container.clientWidth/2 - 100,
+            top: container.clientHeight/2,
+        },
+        styles:{
+            fontFamily: "Montserrat",
+            fontSize: "70px",
+            fontWeight: "bold",
+        }
+    }
+);
 
-let text = new Text(0,container.clientHeight/2,"Innovacion y diseño",options)
-let text2 = new Text(container.clientWidth/2-150,container.clientHeight,"Desarrollo de apps", opciones2)
-let text3 = new Text(container.clientWidth/2-150,container.clientHeight,"Vanguardia en tecnologias",opciones2)
-let cont = new Container(0,0);
-cont.appendChild(text);
-cont.appendChild(text2);
-let loop = new Loop(3000,container,[cont,text3]);
+let img = new Img(
+    {
+        left: 0,
+        top: container.clientHeight,
+        src: "../img/fondoanimacion.png",
+        animated:{
+            top: container.clientHeight/2-150,
+            left: 0,
+            opacity: 0.9,
+        },
+        styles:{
+            fontFamily: "Roboto",
+            fontSize: "40px",
+            transition: "2s",
+        } 
+    }
+)
+
+let cont = new Container(
+    {
+        left:0,
+        top:0,
+        elements: [img, text],
+        animated:{
+            opacity: 1,
+            top: 150,
+            left: 0
+        },
+        styles:{
+            fontFamily: "Roboto",
+            fontSize: "40px",
+            fontWeight: "bold",
+        }
+    }
+);
+
+let loop = new Loop(3000,container,[cont,text2]);
